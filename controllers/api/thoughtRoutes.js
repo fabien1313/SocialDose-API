@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 // GET a single thought by its _id
 router.get('/:id', async (req, res) => {
     try {
-      const thought = await Thought.findOne(req.params.id).select('-__v');
+      const thought = await Thought.findOne({_id: req.params.id}).select('-__v');
       if (thought) {
         return res.json(thought);
       } else {
